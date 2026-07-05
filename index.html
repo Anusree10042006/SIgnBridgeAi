@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>SignBridge AI</title>
+
+    <link rel="stylesheet"
+    href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+<section class="hero">
+<h1>SignBridge AI </h1>
+
+<p>
+AI Powered Accessibility Platform for Deaf and Hard of Hearing People
+</p>
+
+<button onclick="location.href='/voice'">
+🎤 Start Speaking
+</button>
+
+<button onclick="location.href='/scan'">
+📷 Upload Image
+</button>
+
+<button onclick="location.href='/pdf'">
+📄 Upload PDF
+</button>
+
+<button onclick="location.href='/link'">
+🌐 Website Link
+</button>
+<button onclick="location.href='/chat'">
+🤖 AI Tutor
+</button>
+ <button onclick="location.href='/learn'">
+📚 Learn Sign Language
+</button>
+<button onclick="location.href='/camera'">
+📷 Live Camera
+</button> 
+<div style="position:absolute; top:20px; right:20px;">
+
+{% if username %}
+
+    <span style="font-size:18px; margin-right:10px;">
+        Welcome, {{ username }}
+    </span>
+
+    <a href="/logout">
+        <button style="padding:10px 18px;">Logout</button>
+    </a>
+
+{% else %}
+
+    <a href="/login">
+        <button style="padding:10px 18px;">Login</button>
+    </a>
+
+    <a href="/register">
+        <button style="padding:10px 18px;">Register</button>
+    </a>
+
+{% endif %}
+
+</div>
+<a href="/translate">
+    <button>🤟 Text to Sign</button>
+</a>
+<a href="/camera" class="btn btn-primary">
+    📷 Open Sign Recognition
+</a>
+<a href="/dashboard">
+    <button style="
+        background:#007bff;
+        color:white;
+        padding:12px 25px;
+        border:none;
+        border-radius:8px;
+        font-size:16px;
+        cursor:pointer;">
+        📊 Dashboard
+    </button>
+</a>
+</section>
+
+<section>
+
+<h2>Features</h2>
+
+<div>
+
+<h3>🎤 Voice to Sign</h3>
+
+<p>Convert speech into sign language instantly.</p>
+
+</div>
+
+<div>
+
+<h3>📷 OCR Scanner</h3>
+
+<p>Read books, notes and documents.</p>
+
+</div>
+
+<div>
+
+<h3>📄 PDF Translator</h3>
+
+<p>Upload any PDF and convert it.</p>
+
+</div>
+
+<div>
+
+<h3>🤖 AI Tutor</h3>
+
+<p>Ask doubts 

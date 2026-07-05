@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>SignBridge AI Translator</title>
+
+<link rel="stylesheet"
+href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+<body>
+
+<h1>🤟 Smart Text → Sign Language</h1>
+
+<form method="POST">
+
+<input
+type="text"
+name="text"
+placeholder="Enter sentence"
+style="width:500px;"
+required>
+
+<br><br>
+
+<button>
+
+Translate
+
+</button>
+
+</form>
+
+{% if output %}
+
+<hr>
+
+{% for item in output %}
+
+<h3>{{ item.label }}</h3>
+
+{% for image in item.images %}
+
+<img
+src="{{ url_for('static', filename='signs/' + image) }}"
+width="90"
+height="90"
+style="margin:5px;">
+
+{% endfor %}
+
+<br><br>
+
+{% endfor %}
+
+{% endif %}
+
+</body>
+
+</html>

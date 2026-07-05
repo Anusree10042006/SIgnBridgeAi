@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>AI Tutor</title>
+
+<link rel="stylesheet"
+href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+<body>
+
+<h1>🤖 AI Tutor for Deaf Students</h1>
+
+<form method="POST">
+
+<textarea
+name="question"
+rows="5"
+cols="80"
+placeholder="Ask anything..."
+required></textarea>
+
+<br><br>
+
+<button>
+
+Ask AI
+
+</button>
+
+</form>
+
+{% if answer %}
+
+<hr>
+
+<h2>AI Answer</h2>
+
+<textarea rows="10" cols="100" readonly>{{ answer }}</textarea>
+
+<hr>
+
+<h2>🤟 Sign Language</h2>
+
+{% for item in output %}
+
+<h3>{{ item.label }}</h3>
+
+{% for image in item.images %}
+
+<img
+src="{{ url_for('static', filename='signs/' + image) }}"
+width="80"
+height="80">
+
+{% endfor %}
+
+<br><br>
+
+{% endfor %}
+
+{% endif %}
+
+</body>
+
+</html>

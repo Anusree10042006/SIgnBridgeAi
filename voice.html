@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voice to Text</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+    <h1>🎤 Voice to Text</h1>
+
+    <button onclick="startRecognition()">
+        🎙 Start Speaking
+    </button>
+
+    <br><br>
+
+    <p id="status">Click the microphone and start speaking.</p>
+
+    <br>
+
+    <!-- Text Area -->
+    <textarea
+        id="output"
+        rows="10"
+        cols="80"
+        placeholder="Your speech will appear here..."
+        readonly>
+    </textarea>
+
+    <br><br>
+
+    <a href="/">⬅ Back to Home</a>
+
+    <script>
+function startRecognition() {
+
+    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+
+    if (!SpeechRecognition) {
+        alert("Speech Recognition is not supported in this browser.");
+        return;
+    }
+
+    const recognition = new SpeechRecognition();
+
+    recognition.lang = "en-US";
+
+    recognition.onresult = function(event) {
+        alert("You said: " + event.results[0][0].transcript);
+        document.getElementById("output").value = event.results[0][0].transcript;
+    };
+
+    recognition.onerror = function(event) {
+        alert("Error: " + event.error);
+    };
+
+    recognition.start();
+}
+</script>
+
+</body>
+
+</html>

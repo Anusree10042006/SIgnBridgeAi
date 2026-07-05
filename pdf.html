@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>PDF to Sign</title>
+
+    <style>
+
+        body{
+            font-family:Arial;
+            background:#eef2ff;
+            text-align:center;
+            padding:30px;
+        }
+
+        h1{
+            color:#2563eb;
+            font-size:45px;
+        }
+
+        button{
+            padding:12px 30px;
+            font-size:18px;
+            background:#2563eb;
+            color:white;
+            border:none;
+            border-radius:8px;
+            cursor:pointer;
+        }
+
+        img{
+            width:90px;
+            margin:5px;
+        }
+
+        .word{
+            margin:20px;
+            padding:15px;
+            background:white;
+            border-radius:10px;
+        }
+
+        h3{
+            color:#111827;
+        }
+
+        textarea{
+            width:90%;
+            height:180px;
+            margin-top:20px;
+            font-size:16px;
+            padding:10px;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<h1>📄 PDF to Sign</h1>
+
+<form method="POST" enctype="multipart/form-data">
+
+    <input type="file" name="pdf" required>
+
+    <br><br>
+
+    <button type="submit">
+        Upload PDF
+    </button>
+
+</form>
+
+{% if result %}
+
+<h2>Extracted Text</h2>
+
+<textarea readonly>{{ result }}</textarea>
+
+{% endif %}
+
+{% if output %}
+
+<h2>Sign Language</h2>
+
+{% for item in output %}
+
+<div class="word">
+
+<h3>{{ item.label }}</h3>
+
+{% for img in item.images %}
+
+<img src="{{ url_for('static', filename='signs/' + img) }}">
+
+{% endfor %}
+
+</div>
+
+{% endfor %}
+
+{% endif %}
+
+<br>
+
+<a href="/">⬅ Back Home</a>
+
+</body>
+</html>

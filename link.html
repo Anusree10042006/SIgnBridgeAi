@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Website to Text</title>
+</head>
+
+<body>
+
+<h1>🌐 Website to Text</h1>
+
+<form method="POST">
+
+    <input
+        type="text"
+        name="url"
+        placeholder="https://example.com"
+        style="width:500px;"
+        required>
+
+    <br><br>
+
+    <button type="submit">
+
+        Extract Text
+
+    </button>
+
+</form>
+
+{% if result %}
+
+<h2>Extracted Website Content</h2>
+
+<textarea rows="20" cols="100">
+
+{{ result }}
+
+</textarea>
+
+{% endif %}
+
+<br><br>
+
+<a href="/">⬅ Back Home</a>
+
+</body>
+</html>
